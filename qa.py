@@ -4,9 +4,9 @@ from selenium.webdriver.chrome.options import Options
 
 def GetNetworkResources(driver):
     Resources = driver.execute_script("return window.performance.getEntries();")
-    debugger
     for resource in Resources:
-        print(resource['name'])
+        if resource['name'][0:40] == 'https://www.google-analytics.com/collect':
+            print(resource['name'])
     return Resources
 
 caps = DesiredCapabilities.CHROME
